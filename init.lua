@@ -182,10 +182,13 @@ minetest.register_node("framedglass:steel_framed_obsidian_glass", {
 	after_dig_node = return_dye_after_dig
 })
 
-function add_coloured_framedglass(name, desc, dye, texture)
+function add_coloured_framedglass(name, desc, color)
 	minetest.register_node( "framedglass:steel_framed_obsidian_glass"..name, {
 		description = "Steel-framed "..desc.." Obsidian Glass",
-		tiles = {"framedglass_steel_frame.png",texture},
+		tiles = {
+			"framedglass_steel_frame.png",
+			{ name = "framedglass_whiteglass.png", color = color }
+		},
 		drawtype = "glasslike_framed",
 		paramtype = "light",
 		sunlight_propagates = true,
@@ -199,17 +202,20 @@ function add_coloured_framedglass(name, desc, dye, texture)
 	}) 
 end
 
-add_coloured_framedglass ("red","Red","group:basecolor_red","framedglass_redglass.png")
-add_coloured_framedglass ("green","Green","group:basecolor_green","framedglass_greenglass.png")
-add_coloured_framedglass ("blue","Blue","group:basecolor_blue","framedglass_blueglass.png")
-add_coloured_framedglass ("cyan","Cyan","group:basecolor_cyan","framedglass_cyanglass.png")
-add_coloured_framedglass ("darkgreen","Dark Green","group:unicolor_dark_green","framedglass_darkgreenglass.png")
-add_coloured_framedglass ("violet","Violet","group:excolor_violet","framedglass_violetglass.png")
-add_coloured_framedglass ("pink","Pink","group:unicolor_light_red","framedglass_pinkglass.png")
-add_coloured_framedglass ("yellow","Yellow","group:basecolor_yellow","framedglass_yellowglass.png")
-add_coloured_framedglass ("orange","Orange","group:basecolor_orange","framedglass_orangeglass.png")
-add_coloured_framedglass ("brown","Brown","group:unicolor_dark_orange","framedglass_brownglass.png")
-add_coloured_framedglass ("white","White","group:basecolor_white","framedglass_whiteglass.png")
-add_coloured_framedglass ("grey","Grey","group:basecolor_grey","framedglass_greyglass.png")
-add_coloured_framedglass ("darkgrey","Dark Grey","group:excolor_darkgrey","framedglass_darkgreyglass.png")
-add_coloured_framedglass ("black","Black","group:basecolor_black","framedglass_blackglass.png")
+add_coloured_framedglass ("red",		"Red",			0xffff0000)
+add_coloured_framedglass ("orange",		"Orange",		0xfffe7f00)
+add_coloured_framedglass ("yellow",		"Yellow",		0xffffff01)
+add_coloured_framedglass ("green",		"Green",		0xff0cff00)
+add_coloured_framedglass ("cyan",		"Cyan",			0xff7affff)
+add_coloured_framedglass ("blue",		"Blue",			0xff1600ff)
+add_coloured_framedglass ("violet",		"Violet",		0xff7d00ff)
+add_coloured_framedglass ("magenta",	"Magenta",		0xfffd05ff)
+
+add_coloured_framedglass ("darkgreen",	"Dark Green",	0xff144f00)
+add_coloured_framedglass ("pink",		"Pink",			0xffffa4a4)
+add_coloured_framedglass ("brown",		"Brown",		0xff542a00)
+
+add_coloured_framedglass ("white",		"White",		0xffffffff)
+add_coloured_framedglass ("grey",		"Grey",			0xff7f817e)
+add_coloured_framedglass ("darkgrey",	"Dark Grey",	0xff3f403e)
+add_coloured_framedglass ("black",		"Black",		0xff000000)
