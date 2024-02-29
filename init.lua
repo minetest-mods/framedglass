@@ -47,6 +47,7 @@ minetest.register_node("framedglass:wooden_framed_glass", {
 	tiles = {"framedglass_wooden_frame.png","framedglass_glass_face_streaks.png"},
 	paramtype = "light",
 	sunlight_propagates = true,
+	is_ground_content = false,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = sounds,
 })
@@ -57,6 +58,7 @@ minetest.register_node("framedglass:steel_framed_glass", {
 	tiles = {"framedglass_steel_frame.png","framedglass_glass_face_streaks.png"},
 	paramtype = "light",
 	sunlight_propagates = true,
+	is_ground_content = false,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = sounds,
 })
@@ -67,6 +69,7 @@ minetest.register_node("framedglass:wooden_framed_obsidian_glass", {
 	tiles = {"framedglass_wooden_frame.png","framedglass_glass_face_clean.png"},
 	paramtype = "light",
 	sunlight_propagates = true,
+	is_ground_content = false,
 	groups = {cracky=3},
 	sounds = sounds,
 })
@@ -77,6 +80,7 @@ minetest.register_node("framedglass:steel_framed_obsidian_glass", {
 	tiles = {"framedglass_steel_frame.png", "framedglass_glass_face_clean.png"},
 	paramtype = "light",
 	sunlight_propagates = true,
+	is_ground_content = false,
 	palette = "unifieddyes_palette_extended.png",
 	airbrush_replacement_node = "framedglass:steel_framed_obsidian_glass_tinted",
 	groups = {cracky=3, ud_param2_colorable = 1},
@@ -96,7 +100,7 @@ minetest.register_node("framedglass:steel_framed_obsidian_glass_tinted", {
 	paramtype = "light",
 	paramtype2 = "color",
 	sunlight_propagates = true,
-	is_ground_content = true,
+	is_ground_content = false,
 	use_texture_alpha = true,
 	groups = {cracky=3, oddly_breakable_by_hand=3, ud_param2_colorable = 1, not_in_creative_inventory = 1},
 	sounds = sounds,
