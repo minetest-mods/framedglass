@@ -142,7 +142,7 @@ if minetest.get_modpath("unifieddyes") then
 	}
 
 	local old_nodes = {}
-	for k, v in pairs(static_colors) do
+	for k in pairs(static_colors) do
 		table.insert(old_nodes, "framedglass:steel_framed_obsidian_glass" .. k)
 	end
 
@@ -166,4 +166,9 @@ if minetest.get_modpath("unifieddyes") then
 			end
 		end
 	})
+end
+
+if minetest.get_modpath("mtt") and mtt.enabled then
+	-- validate nodenames
+	mtt.validate_nodenames(minetest.get_modpath("framedglass") .. "/nodenames.txt")
 end
