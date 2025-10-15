@@ -74,28 +74,26 @@ minetest.register_node("framedglass:wooden_framed_obsidian_glass", {
 	sounds = sounds,
 })
 
-minetest.register_node("framedglass:steel_framed_obsidian_glass", {
+local steel_framed_obsidian_glass = {
 	description = "Steel-framed Obsidian Glass",
 	drawtype = "glasslike_framed",
 	tiles = {"framedglass_steel_frame.png", "framedglass_glass_face_clean.png"},
 	paramtype = "light",
 	sunlight_propagates = true,
 	is_ground_content = false,
-	palette = "unifieddyes_palette_extended.png",
 	airbrush_replacement_node = "framedglass:steel_framed_obsidian_glass_tinted",
 	groups = {cracky=3, ud_param2_colorable = 1},
 	sounds = sounds,
 	on_dig = on_dig,
-})
+}
 
-minetest.register_node("framedglass:steel_framed_obsidian_glass_tinted", {
+local steel_framed_obsidian_glass_tinted = {
 	description = "Steel-framed Obsidian Glass",
 	drawtype = "glasslike_framed",
 	tiles = {
 		{ name = "framedglass_steel_frame.png", color = "white" },
 		"framedglass_whiteglass.png",
 	},
-	palette = "unifieddyes_palette_extended.png",
 	inventory_image = minetest.inventorycube("framedglass_glass_face_inv_static.png"),
 	paramtype = "light",
 	paramtype2 = "color",
@@ -105,7 +103,15 @@ minetest.register_node("framedglass:steel_framed_obsidian_glass_tinted", {
 	groups = {cracky=3, oddly_breakable_by_hand=3, ud_param2_colorable = 1, not_in_creative_inventory = 1},
 	sounds = sounds,
 	on_dig = on_dig,
-})
+}
+
+if minetest.get_modpath("unifieddyes") then
+	steel_framed_obsidian_glass.palette = "unifieddyes_palette_extended.png"
+	steel_framed_obsidian_glass_tinted.palette = "unifieddyes_palette_extended.png"
+end
+
+minetest.register_node("framedglass:steel_framed_obsidian_glass", steel_framed_obsidian_glass)
+minetest.register_node("framedglass:steel_framed_obsidian_glass_tinted", steel_framed_obsidian_glass_tinted)
 
 -- crafts!
 
