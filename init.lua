@@ -172,3 +172,41 @@ if minetest.get_modpath("mtt") and mtt.enabled then
 	-- validate nodenames
 	mtt.validate_nodenames(minetest.get_modpath("framedglass") .. "/nodenames.txt")
 end
+
+if core.get_modpath("mcl_core") then
+	core.register_craft({
+		output = 'framedglass:wooden_framed_glass 4',
+		recipe = {
+			{'mcl_core:glass', 'mcl_core:glass', 'mcl_core:stick'},
+			{'mcl_core:glass', 'mcl_core:glass', 'mcl_core:stick'},
+			{'mcl_core:stick', 'mcl_core:stick', ''},
+		}
+	})
+	
+	core.register_craft({
+		output = 'framedglass:steel_framed_glass 4',
+		recipe = {
+			{'mcl_core:glass', 'mcl_core:glass', 'mcl_core:iron_ingot'},
+			{'mcl_core:glass', 'mcl_core:glass', 'mcl_core:iron_ingot'},
+			{'mcl_core:iron_ingot', 'mcl_core:iron_ingot', ''},
+		}
+	})
+	
+	core.register_craft({
+		output = 'framedglass:wooden_framed_obsidian_glass 4',
+		recipe = {
+			{'mcl_core:glass', 'mcl_core:obsidian', 'mcl_core:stick'},
+			{'mcl_core:obsidian', 'mcl_core:glass', 'mcl_core:stick'},
+			{'mcl_core:stick', 'mcl_core:stick', ''},
+		}
+	})
+	
+	core.register_craft({
+		output = 'framedglass:steel_framed_obsidian_glass 4',
+		recipe = {
+			{'mcl_core:glass', 'mcl_core:obsidian', 'mcl_core:iron_ingot'},
+			{'mcl_core:obsidian', 'mcl_core:glass', 'mcl_core:iron_ingot'},
+			{'mcl_core:iron_ingot', 'mcl_core:iron_ingot', ''},
+		}
+	})
+end
