@@ -188,7 +188,7 @@ if core.get_modpath("mcl_core") then
 			{'mcl_core:stick', 'mcl_core:stick', ''},
 		}
 	})
-	
+
 	core.register_craft({
 		output = 'framedglass:steel_framed_glass 4',
 		recipe = {
@@ -197,7 +197,7 @@ if core.get_modpath("mcl_core") then
 			{'mcl_core:iron_ingot', 'mcl_core:iron_ingot', ''},
 		}
 	})
-	
+
 	core.register_craft({
 		output = 'framedglass:wooden_framed_obsidian_glass 4',
 		recipe = {
@@ -206,7 +206,7 @@ if core.get_modpath("mcl_core") then
 			{'mcl_core:stick', 'mcl_core:stick', ''},
 		}
 	})
-	
+
 	core.register_craft({
 		output = 'framedglass:steel_framed_obsidian_glass 4',
 		recipe = {
