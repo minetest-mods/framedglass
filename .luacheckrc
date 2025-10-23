@@ -8,7 +8,7 @@ read_globals = {
 	table = {fields = {"copy", "getn"}},
 
 	-- Minetest
-	"minetest",
+	"core", "minetest",
 	"ItemStack",
 	"dump", "dump2",
 	"VoxelArea", "vector",
