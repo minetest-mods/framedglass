@@ -2,7 +2,7 @@
 
 framedglass = {}
 
-minetest.register_craft({
+core.register_craft({
 	output = 'framedglass:wooden_framed_glass 4',
 	recipe = {
 		{'default:glass', 'default:glass', 'default:stick'},
@@ -11,7 +11,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = 'framedglass:steel_framed_glass 4',
 	recipe = {
 		{'default:glass', 'default:glass', 'default:steel_ingot'},
@@ -20,7 +20,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = 'framedglass:wooden_framed_obsidian_glass 4',
 	recipe = {
 		{'default:obsidian_glass', 'default:obsidian_glass', 'default:stick'},
@@ -29,7 +29,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = 'framedglass:steel_framed_obsidian_glass 4',
 	recipe = {
 		{'default:obsidian_glass', 'default:obsidian_glass', 'default:steel_ingot'},
@@ -38,10 +38,10 @@ minetest.register_craft({
 	}
 })
 
-local sounds = minetest.get_modpath("default") and default.node_sound_glass_defaults()
-local on_dig = minetest.get_modpath("unifieddyes") and unifieddyes.on_dig
+local sounds = core.get_modpath("default") and default.node_sound_glass_defaults()
+local on_dig = core.get_modpath("unifieddyes") and unifieddyes.on_dig
 
-minetest.register_node("framedglass:wooden_framed_glass", {
+core.register_node("framedglass:wooden_framed_glass", {
 	description = "Wooden-framed Glass",
 	drawtype = "glasslike_framed",
 	tiles = {"framedglass_wooden_frame.png","framedglass_glass_face_streaks.png"},
@@ -52,7 +52,7 @@ minetest.register_node("framedglass:wooden_framed_glass", {
 	sounds = sounds,
 })
 
-minetest.register_node("framedglass:steel_framed_glass", {
+core.register_node("framedglass:steel_framed_glass", {
 	description = "Steel-framed Glass",
 	drawtype = "glasslike_framed",
 	tiles = {"framedglass_steel_frame.png","framedglass_glass_face_streaks.png"},
@@ -63,7 +63,7 @@ minetest.register_node("framedglass:steel_framed_glass", {
 	sounds = sounds,
 })
 
-minetest.register_node("framedglass:wooden_framed_obsidian_glass", {
+core.register_node("framedglass:wooden_framed_obsidian_glass", {
 	description = "Wooden-framed Obsidian Glass",
 	drawtype = "glasslike_framed",
 	tiles = {"framedglass_wooden_frame.png","framedglass_glass_face_clean.png"},
@@ -94,7 +94,7 @@ local steel_framed_obsidian_glass_tinted = {
 		{ name = "framedglass_steel_frame.png", color = "white" },
 		"framedglass_whiteglass.png",
 	},
-	inventory_image = minetest.inventorycube("framedglass_glass_face_inv_static.png"),
+	inventory_image = core.inventorycube("framedglass_glass_face_inv_static.png"),
 	paramtype = "light",
 	paramtype2 = "color",
 	sunlight_propagates = true,
@@ -105,17 +105,17 @@ local steel_framed_obsidian_glass_tinted = {
 	on_dig = on_dig,
 }
 
-if minetest.get_modpath("unifieddyes") then
+if core.get_modpath("unifieddyes") then
 	steel_framed_obsidian_glass.palette = "unifieddyes_palette_extended.png"
 	steel_framed_obsidian_glass_tinted.palette = "unifieddyes_palette_extended.png"
 end
 
-minetest.register_node("framedglass:steel_framed_obsidian_glass", steel_framed_obsidian_glass)
-minetest.register_node("framedglass:steel_framed_obsidian_glass_tinted", steel_framed_obsidian_glass_tinted)
+core.register_node("framedglass:steel_framed_obsidian_glass", steel_framed_obsidian_glass)
+core.register_node("framedglass:steel_framed_obsidian_glass_tinted", steel_framed_obsidian_glass_tinted)
 
 -- crafts!
 
-if minetest.get_modpath("unifieddyes") then
+if core.get_modpath("unifieddyes") then
 	unifieddyes.register_color_craft({
 		output = "framedglass:steel_framed_obsidian_glass_tinted",
 		type = "shapeless",
@@ -152,7 +152,7 @@ if minetest.get_modpath("unifieddyes") then
 		table.insert(old_nodes, "framedglass:steel_framed_obsidian_glass" .. k)
 	end
 
-	minetest.register_lbm({
+	core.register_lbm({
 		label = "Convert old framedglass static-colored nodes",
 		name = "framedglass:convert_static",
 		run_at_every_load = false,
@@ -160,12 +160,12 @@ if minetest.get_modpath("unifieddyes") then
 		action = function(pos, node)
 			local oldcolor = string.sub(node.name, 40)
 			if oldcolor then
-				minetest.swap_node(pos, {
+				core.swap_node(pos, {
 					name = "framedglass:steel_framed_obsidian_glass_tinted",
 					param2 = static_colors[oldcolor]
 				})
 			else
-				minetest.swap_node(pos, {
+				core.swap_node(pos, {
 					name = "framedglass:steel_framed_obsidian_glass",
 					param2 = 0
 				})
@@ -174,9 +174,9 @@ if minetest.get_modpath("unifieddyes") then
 	})
 end
 
-if minetest.get_modpath("mtt") and mtt.enabled then
+if core.get_modpath("mtt") and mtt.enabled then
 	-- validate nodenames
-	mtt.validate_nodenames(minetest.get_modpath("framedglass") .. "/nodenames.txt")
+	mtt.validate_nodenames(core.get_modpath("framedglass") .. "/nodenames.txt")
 end
 
 if core.get_modpath("mcl_core") then
