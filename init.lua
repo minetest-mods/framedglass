@@ -39,7 +39,9 @@ core.register_craft({
 })
 
 local sounds = core.get_modpath("default") and default.node_sound_glass_defaults()
-local on_dig = core.get_modpath("unifieddyes") and unifieddyes.on_dig
+local ud = core.get_modpath("unifieddyes") and unifieddyes
+local on_dig = ud and not ud.preserve_metadata and ud.on_dig
+local preserve_metadata = ud and ud.preserve_metadata
 
 core.register_node("framedglass:wooden_framed_glass", {
 	description = "Wooden-framed Glass",
@@ -85,6 +87,7 @@ local steel_framed_obsidian_glass = {
 	groups = {cracky=3, ud_param2_colorable = 1},
 	sounds = sounds,
 	on_dig = on_dig,
+	preserve_metadata = preserve_metadata,
 }
 
 local steel_framed_obsidian_glass_tinted = {
@@ -103,6 +106,7 @@ local steel_framed_obsidian_glass_tinted = {
 	groups = {cracky=3, oddly_breakable_by_hand=3, ud_param2_colorable = 1, not_in_creative_inventory = 1},
 	sounds = sounds,
 	on_dig = on_dig,
+	preserve_metadata = preserve_metadata,
 }
 
 if core.get_modpath("unifieddyes") then
