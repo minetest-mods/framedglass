@@ -40,8 +40,8 @@ core.register_craft({
 
 local sounds = core.get_modpath("default") and default.node_sound_glass_defaults()
 local ud = core.get_modpath("unifieddyes") and unifieddyes
-local on_dig = ud and not ud.preserve_metadata and ud.on_dig
-local preserve_metadata = ud and ud.preserve_metadata
+local on_dig = (ud and not ud.preserve_metadata and ud.on_dig) or nil
+local preserve_metadata = (ud and ud.preserve_metadata) or nil
 
 core.register_node("framedglass:wooden_framed_glass", {
 	description = "Wooden-framed Glass",
